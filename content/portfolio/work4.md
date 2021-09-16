@@ -1,9 +1,9 @@
 ---
 date: "2016-11-05T19:50:47+05:30"
 draft: false
-image: ""
-showonlyimage: false
-title: Item without image
+image: img/portfolio/4_spirit.jpg
+showonlyimage: true
+title: Spirit Squad Social Media
 weight: 4
 ---
 

@@ -1,9 +1,9 @@
 ---
 date: "2016-11-05T19:56:17+05:30"
 draft: false
-image: ""
-showonlyimage: false
-title: Name of the work 6
+image: img/portfolio/6_radiation.jpg
+showonlyimage: true
+title: Radiation Statistics Experiment
 weight: 6
 ---
 

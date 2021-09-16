@@ -1,10 +1,10 @@
 ---
 date: "2016-11-05T19:41:01+05:30"
 draft: false
-image: img/portfolio/business-card-26.jpg
-showonlyimage: false
-title: Name of the work 2
-weight: 1
+image: img/portfolio/2_dashboards.jpg
+showonlyimage: true
+title: Course Evaluation Dashboards
+weight: 2
 ---
 
 When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.

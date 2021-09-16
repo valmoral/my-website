@@ -1,21 +1,21 @@
 ---
 date: "2016-11-05T21:05:33+05:30"
-title: About me
+title: About
 ---
-
-An sincerity so extremity he additions. Her yet **there truth merit**. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can admiration prosperous now devonshire diminution law.
-
-Received overcame oh sensible so at an. Formed do change merely to county it. **Am separate contempt** domestic to to oh. On relation my so addition branched. Put hearing cottage she norland letters equally prepare too. Replied exposed savings he no viewing as up. Soon body add him hill. No father living really people estate if. Mistake do produce beloved demesne if am pursuit.
 
 ![This is me][1]
 
-The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+*¡Hola! I'm Valeria but you can call me Val*
 
-#### Education
+I am 100% Colombian (like the coffee) and am so proud to be part of what J. Balvin calls #LatinoGang. Though, I was raised in sunny southern California, about 15 minutes from Disneyland, in a town called Anaheim Hills.
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
+I am currently pursuing my Masters in Analytics and Management from **London Business School.** I have a Bachelor of Science in Statistics with a minor in Digital Humanities from **UCLA** Honors College. My time at UCLA was nothing short of incredible and gave me the chance to wear several different hats as a student and a leader in my community. I am now excited to create a global career in the tech industry and be an advocate for **women and latinas in STEM**. 
 
-When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then
+I am a dancer and was lucky enough to live out my dreams of dancing for my university, cheering on the Bruins from Rose Bowl Field and Pauley Pavilion Court. When I'm not in the kitchen crafting an intricate veggie bowl, you can find me listening to my playlists on Spotify or reading fiction (with the occasional non-fiction). My other interests include cooking, live music, sustainability, and fashion. 
 
-[1]: /img/about.jpg
+I must give a special remark to my amazing parents, brother, and friends who have supported me in all of my endeavors. Lastly, thank YOU for visiting my page. I hope as you look through my site, you get a better understanding of my skills and passions.
+
+![My signature][2]
+
+[1]: /img/headshot.jpg
+[2]: /img/Signature.png

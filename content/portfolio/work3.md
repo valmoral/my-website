@@ -1,10 +1,10 @@
 ---
 date: "2016-11-05T19:44:32+05:30"
 draft: false
-image: img/portfolio/gravity-paper.jpg
-showonlyimage: false
-title: Name of the work 3
-weight: 2
+image: img/portfolio/3_orpheum.jpg
+showonlyimage: true
+title: Orpheum Theatre Rebrand
+weight: 3
 ---
 
 Fifth abundantly made Give sixth hath. Cattle creature i be don't them.
