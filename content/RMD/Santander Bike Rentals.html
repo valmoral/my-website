@@ -1,0 +1,120 @@
+---
+title: "Santander Bike Rentals"
+author: "Valeria Morales, Lazar Jelic, Hanlu Lin, Hao Ni, Purva Sikri, Junna Yanai"
+date: "9/17/2021"
+output: html_document
+---
+
+<script src="Santander Bike Rentals_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="bike-rental-plots" class="section level1">
+<h1>BIke Rental Plots</h1>
+<div id="load-and-clean-the-latest-tfl-data" class="section level3">
+<h3>Load and clean the latest Tfl data</h3>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2021-08-23T14%3A32%3A29/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20210917%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210917T142839Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=60d565d6240ffb88f5daa0599caeff982e815c9e36eb438d7a684ac1d88415fb&amp;X-Amz-SignedHeaders=host]
+##   Date: 2021-09-17 14:32
+##   Status: 200
+##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##   Size: 173 kB
+## &lt;ON DISK&gt;  /var/folders/3x/0gkc1s0n3zg1n9rkxdtlryzc0000gn/T//RtmplfaJvf/file72b4307d4abe.xlsx</code></pre>
+<pre class="r"><code># Use read_excel to read it as dataframe
+bike0 &lt;- read_excel(bike.temp,
+                   sheet = &quot;Data&quot;,
+                   range = cell_cols(&quot;A:B&quot;))
+
+# change dates to get year, month, and week
+bike &lt;- bike0 %&gt;% 
+  clean_names() %&gt;% 
+  rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))</code></pre>
+</div>
+<div id="facet-grid-by-month-and-year" class="section level3">
+<h3>Facet grid by month and year</h3>
+<pre class="r"><code>knitr::include_graphics(&quot;../images/tfl_distributions_monthly.png&quot;, error=F)</code></pre>
+<p><img src="../images/tfl_distributions_monthly.png" width="100%" /></p>
+<blockquote>
+<p>Answer below</p>
+</blockquote>
+<p>The grid above shows a large decrease in bike rentals in May and June 2020 compared to previous years. This huge decrease is clearly to do with COVID-19 lockdowns since people had to stay inside. We can also see that May and June have some variability year to year which most likely has to do with weather conditions in those two months (i.e. if it’s warmer in May 2018 than in May 2017, there would be more bike rentals in 2018).</p>
+</div>
+<div id="reproduce-the-following-two-graphs." class="section level3">
+<h3>Reproduce the following two graphs.</h3>
+<pre class="r"><code>knitr::include_graphics(&quot;../images/tfl_monthly.png&quot;, error=F)</code></pre>
+<p><img src="../images/tfl_monthly.png" width="100%" /></p>
+<pre class="r"><code># Clean the data 
+bike_exp &lt;- bike %&gt;%
+  filter(year &gt; 2015) %&gt;% #Filter all the data that after 2015
+  group_by(month) %&gt;%
+  summarise(expected_rentals=mean(bikes_hired)) # Calculate the expected rentals
+
+# Replicate the first graph of actual and expected rentals for each month across years
+plot &lt;- bike %&gt;%
+  filter(year &gt; 2015) %&gt;%
+  group_by(year, month) %&gt;%
+  summarise(actual_rentals=mean(bikes_hired)) %&gt;% # Calculate the actual mean rentals for each month
+  inner_join(bike_exp, by=&#39;month&#39;) %&gt;% # Combine the data with original dataset
+  mutate(
+    up=if_else(actual_rentals &gt; expected_rentals, actual_rentals - expected_rentals, 0),
+    down=if_else(actual_rentals &lt; expected_rentals, expected_rentals - actual_rentals, 0)) %&gt;% # Create the up and down variable for plotting the shaded area using geom_ribbon
+  ggplot(aes(x=month)) +
+  geom_line(aes(y=actual_rentals, group=1), size=0.1, colour=&#39;black&#39;) +
+  geom_line(aes(y=expected_rentals, group=1), size=0.7, colour=&#39;blue&#39;) + # Create lines for actual and expected rentals data for each month across years
+  geom_ribbon(aes(ymin=expected_rentals, ymax=expected_rentals+up, group=1), fill=&#39;#7DCD85&#39;, alpha=0.4) +
+  geom_ribbon(aes(ymin=expected_rentals, ymax=expected_rentals-down, group=1), fill=&#39;#CB454A&#39;, alpha=0.4) + # Create shaded areas and fill with different colors for up and down side
+  facet_wrap(~year) + # Facet the graphs by year
+  theme_bw() + # Theme
+  labs(title=&quot;Monthly changes in TfL bike rentals&quot;, subtitle=&quot;Change from monthly average shown in blue and calculated between 2016-2019&quot;, x=&quot;&quot;, y=&quot;Bike rentals&quot;) +
+  NULL</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggsave(file=&#39;bike_plot1_home.jpg&#39;, plot=plot, path = &#39;~/Desktop/LBS/Term1/my-website/my-website/static/img&#39;, width=18, height=18) 
+
+ggsave(file=&#39;bike_plot1.jpg&#39;, plot=plot, path = &#39;~/Desktop/LBS/Term1/my-website/my-website/static/img&#39;, width=18, height=8) </code></pre>
+</div>
+<div id="replicate-the-second-graph-of-percentage-changes-from-the-expected-level-of-weekly-rentals." class="section level3">
+<h3>Replicate the second graph of percentage changes from the expected level of weekly rentals.</h3>
+<pre class="r"><code>knitr::include_graphics(&quot;../images/tfl_weekly.png&quot;, error=F)</code></pre>
+<p><img src="../images/tfl_weekly.png" width="100%" /></p>
+<pre class="r"><code># Clean the data
+bike_exp_week &lt;- bike %&gt;%
+  filter(year &gt; 2015) %&gt;%
+  mutate(week=if_else(month == &#39;Jan&#39; &amp; week == 53, 1, week)) %&gt;% # Create week variable for the dataset
+  group_by(week) %&gt;%
+  summarise(expected_rentals=mean(bikes_hired))
+
+# Make the graph
+plot &lt;- bike %&gt;%
+  filter(year &gt; 2015) %&gt;%
+  mutate(week=if_else(month == &#39;Jan&#39; &amp; week == 53, 1, week)) %&gt;%
+  group_by(year, week) %&gt;%
+  summarise(actual_rentals=mean(bikes_hired)) %&gt;%
+  inner_join(bike_exp_week, by=&#39;week&#39;) %&gt;%
+  mutate(
+    actual_rentals=(actual_rentals-expected_rentals)/expected_rentals, #Calculate the excess rentals 
+    up=if_else(actual_rentals &gt; 0, actual_rentals, 0),
+    down=if_else(actual_rentals &lt; 0, actual_rentals, 0), # Create the up and down variable for plotting the shaded area using geom_ribbon
+    colour=if_else(up &gt; 0, &#39;G&#39;, &#39;R&#39;)) %&gt;% # Define the colors for up and down side
+  ggplot(aes(x=week)) +
+  geom_rect(aes(xmin=13, xmax=26, ymin=-Inf, ymax=Inf), alpha=0.005) + 
+  geom_rect(aes(xmin=39, xmax=53, ymin=-Inf, ymax=Inf), alpha=0.005) + # Add shaded grey areas for the according week ranges
+  geom_line(aes(y=actual_rentals, group=1), size=0.1, colour=&#39;black&#39;) +
+  geom_ribbon(aes(ymin=0, ymax=up, group=1), fill=&#39;#7DCD85&#39;, alpha=0.4) +
+  geom_ribbon(aes(ymin=down, ymax=0, group=1), fill=&#39;#CB454A&#39;, alpha=0.4) + # Create shaded areas and fill with different colors for up and down
+  geom_rug(aes(color=colour), sides=&#39;b&#39;) + # Plot rugs using geom_rug
+  scale_colour_manual(breaks=c(&#39;G&#39;, &#39;R&#39;), values=c(&#39;#7DCD85&#39;, &#39;#CB454A&#39;)) +
+  facet_wrap(~year) + # Facet by year
+  theme_bw() + # Theme
+  labs(title=&quot;Weekly changes in TfL bike rentals&quot;, subtitle=&quot;% change from weekly averages calculated between 2016-2019&quot;, x=&quot;week&quot;, y=&quot;&quot;) +
+  NULL</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggsave(file=&#39;bike2_plot_home.jpg&#39;, plot=plot, path = &#39;~/Desktop/LBS/Term1/my-website/my-website/static/img&#39;, width=18, height=18) 
+
+ggsave(file=&#39;bike2_plot.jpg&#39;, plot=plot, path = &#39;~/Desktop/LBS/Term1/my-website/my-website/static/img&#39;, width=18, height=8) </code></pre>
+</div>
+</div>

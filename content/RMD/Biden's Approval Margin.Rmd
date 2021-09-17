@@ -1,0 +1,96 @@
+---
+title: "Biden's Approval Margin"
+author: "Valeria Morales, Lazar Jelic, Hanlu Lin, Hao Ni, Purva Sikri, Junna Yanai"
+date: "9/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(countrycode)
+library(infer)
+
+set.seed(1) #making results replicable by setting seed
+```
+
+# Biden's Approval Margins
+
+```{r, cache=TRUE}
+# Import approval polls data directly off fivethirtyeight website
+approval_polllist <- read_csv('https://projects.fivethirtyeight.com/biden-approval-data/approval_polllist.csv') 
+glimpse(approval_polllist)
+
+# Use `lubridate` to fix dates, as they are given as characters.
+approval_polllist <- approval_polllist %>%
+  mutate(
+    modeldate=mdy(modeldate), 
+    startdate=mdy(startdate),
+    enddate=mdy(enddate),
+    createddate=mdy(createddate)
+  )
+
+glimpse(approval_polllist)
+```
+
+## Create a plot
+ 
+```{r trump_margins, out.width="100%"}
+knitr::include_graphics("../images/biden_approval_margin.png", error = FALSE)
+```
+
+## Replicating the Biden Approval Margin graph
+
+```{r}
+plot <- approval_polllist %>%
+  mutate(week=week(enddate)) %>% #Creating a new column called week by extracting the week from the enddate variable
+  group_by(week) %>%
+  mutate(
+    net_approval_rate=approve-disapprove #Creating a new column called net_approval_rate by subtracting disapprove from approve
+  ) %>%
+  summarise(
+    mean=mean(net_approval_rate), #Mean net approval by week
+    sd=sd(net_approval_rate), #Standard deviation of net approval by week
+    count=n(), #Count by week
+    se=sd/sqrt(count), #Standard error of the week 
+    t_critical=qt(0.975, count-1), #T-critical value
+    lower=mean-t_critical*se, #Lower end of the CI
+    upper=mean+t_critical*se #Upper end of the CI
+  ) %>%
+  
+  #Scatterplot of the calculated net approval rate means by week 
+  ggplot(aes(x=week, y=mean)) + 
+  geom_point(colour='red') + #Scatterplot using red points
+  geom_line(colour='red', size=0.25) + #Adding a red line to connect the points
+  geom_ribbon(aes(ymin=lower, ymax=upper), colour='red', linetype=1, alpha=0.1, size=0.25) +
+  geom_smooth(se=F) + #Adding a smooth line for the trend
+  geom_hline(yintercept=0, color='orange', size=2) + #Adding an orange horizontal line
+  theme_bw() + #Theme
+  labs(title='Estimating Approval Margin (approve-disapprove) for Joe Biden', #Adding a title
+       subtitle='Weekly average of all polls', #Subtitle
+       x='Week of the year', #X-label
+       y='Average Approval Margin (Approve - Disapprove)') + #Y-label
+  NULL
+
+ggsave(file='bidenplot_home.jpg', plot=plot, path = '~/Desktop/LBS/Term1/my-website/my-website/static/img', height=18, width = 18)
+
+ggsave(file='bidenplot.jpg', plot=plot, path = '~/Desktop/LBS/Term1/my-website/my-website/static/img', height=8, width = 18)
+```
+
+## Compare Confidence Intervals
+
+> Answer below
+
+The confidence interval for 'week 4' ranges from 9.14 to 19.6828 with a mean of 14.41 and standard deviation of 10.25, while 'week 25' ranges from 10.30 to 12.7523 with a mean of 11.53 and a standard deviation of 4.74. This is mainly due to the number of data points. For 'week 4' we only have 17 data points to work with, while 'week 25' has 60. With a larger set of data to work with, we are able to create narrower intervals with the same level of confidence. 

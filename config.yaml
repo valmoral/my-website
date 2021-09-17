@@ -1,5 +1,5 @@
 baseurl: https://valeriamorales-portfolio.netlify.app/
-title: Valeria Morales
+title: Valeria Morales 
 theme: hugo-creative-portfolio-theme
 languageCode: en-us
 disqusShortname: ''
@@ -10,15 +10,15 @@ params:
   email: vmorales.mam2022@london.edu
   navlinks:
     - home: yes
-      name: Home
+      name: Portfolio
       url: portfolio/
     - name: About
       url: about/
-    - name: Get in touch
+    - name: Contact
       url: contact/
   sidebarAbout:
-    - I am a Masters in Analytics Student at London Business School with a Bachelors of Science in Statistics and a passion for technology.
-    - Colombian, from Los Angeles, based in London.
+    - I am a Masters in Analytics and Management Student at London Business School with a Bachelors of Science in Statistics and a passion for technology.
+    - Colombian, from Los Angeles, based in London
   social:
     email: vmorales.mam2022@london.edu
     github: https://github.com/valmoral
