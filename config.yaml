@@ -1,5 +1,6 @@
 baseurl: https://valeriamorales-portfolio.netlify.app/
-title: Valeria Morales 
+title: Valeria morales
+image: Logo_Black.png
 theme: hugo-creative-portfolio-theme
 languageCode: en-us
 disqusShortname: ''
@@ -22,7 +23,7 @@ params:
   sidebarAbout:
     - Masters in Management at London Business School | Bachelors of Science in Statistics from UCLA
     - Colombian, from Los Angeles, based in London
-    - analytical, creative, & overall groovy
+    - analytical, creative, & interested in tech
   social:
     email: vmorales.mam2022@london.edu
     github: https://github.com/valmoral
