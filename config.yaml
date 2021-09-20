@@ -16,6 +16,8 @@ params:
       url: about/
     - name: Contact
       url: contact/
+    - name: CV
+      url: cv_vm.pdf
   sidebarAbout:
     - Masters in Management at London Business School | Bachelors of Science in Statistics from UCLA
     - Colombian, from Los Angeles, based in London
