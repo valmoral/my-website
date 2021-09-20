@@ -17,6 +17,8 @@ Apart from my studies, I love to dance and was lucky enough to live out my dream
 
 I must give a special remark to my amazing parents, brother, and friends who have supported me in all of my endeavors. Lastly, thank YOU for visiting my page. I hope as you look through my site, you get a better understanding of my skills and passions.
 
+<iframe src="https://open.spotify.com/embed/playlist/11b74JyIdC6gJ9iRMlaDK2" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
 ![My signature][2]
 
 [1]: /img/headshot.jpg

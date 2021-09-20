@@ -8,6 +8,7 @@ params:
   copyright: 'Valeria Morales 2021'
   description: Valeria Morales Portfolio
   email: vmorales.mam2022@london.edu
+  formEmail: val.c.morales@gmail.com
   navlinks:
     - home: yes
       name: Portfolio
@@ -23,7 +24,7 @@ params:
     - Colombian, from Los Angeles, based in London
     - analytical, creative, & overall groovy
   social:
-    email: val.c.morales@gmail.com
+    email: vmorales.mam2022@london.edu
     github: https://github.com/valmoral
     instagram: https://www.instagram.com/valmoral37/
     linkedin: https://www.linkedin.com/in/valmoral37/
