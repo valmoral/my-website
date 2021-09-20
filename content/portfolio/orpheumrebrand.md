@@ -4,7 +4,7 @@ draft: false
 image: img/portfolio/3_orpheum.jpg
 showonlyimage: true
 title: Orpheum Theatre Rebrand
-weight: 9
+weight: 6
 ---
 
 ![Add Photos][1]

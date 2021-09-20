@@ -20,4 +20,4 @@ I must give a special remark to my amazing parents, brother, and friends who hav
 ![My signature][2]
 
 [1]: /img/headshot.jpg
-[2]: /img/Signature.png
+[2]: /img/valeriasignature.png

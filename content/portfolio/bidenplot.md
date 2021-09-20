@@ -2,12 +2,12 @@
 date: "2016-11-05T19:44:32+05:30"
 draft: false
 image: img/bidenplot_home.jpg
-showonlyimage: false
+showonlyimage: true
 title: Biden's Approval Margin
 weight: 4
 ---
 
-![Add Photos][1]
+![BidenPlot][1]
 
 ```r
 plot <- approval_polllist %>%
@@ -45,11 +45,4 @@ ggsave(file='bidenplot_home.jpg', plot=plot, path = '~/Desktop/LBS/Term1/my-webs
 ggsave(file='bidenplot.jpg', plot=plot, path = '~/Desktop/LBS/Term1/my-website/my-website/static/img', height=8, width = 18)
 ```
 
-> A relevant comment
-
-You can even add some 
-
-* Bullet
-* Points
-
-#[1]: /img/germanElections_plot.jpg 
+[1]: /img/bidenplot.jpg 

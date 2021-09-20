@@ -2,7 +2,7 @@
 date: "2016-11-05T18:25:22+05:30"
 draft: false
 image: img/germanElections_plot_home.jpg
-showonlyimage: false
+showonlyimage: true
 title: German Election Polls
 weight: 2
 ---
@@ -51,12 +51,5 @@ ggsave(file='germanElections_plot_home.jpg', plot=german_elections_plot, path = 
 
 ggsave(file='germanElections_plot.jpg', plot=german_elections_plot, path = '~/Desktop/LBS/Term1/my-website/my-website/static/img', width=18, height=8)
 ``` 
-
-> A relevant comment
-
-You can even add some 
-
-* Bullet
-* Points
 
 [1]: /img/germanElections_plot.jpg
