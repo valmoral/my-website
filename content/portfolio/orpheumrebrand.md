@@ -9,13 +9,14 @@ weight: 6
 
 ![Add Photos][1]
 
-Add Comments 
+In winter 2020, I took my final Digital Humanities course, DH 199, a research based course under the umbrella topic of "Downtown Los Angeles Broadway Theaters." After delving into the rich history of these grandiose theaters, I decided to focus our final project on rebranding an entire theatre, the Orpheum, in the hopes of bringing life back to the theatre district in downtown LA. 
 
-> A relevant comment
 
-You can even add some 
+We presented our final project to a few board members of the Historic Theatre Foundation. They loved the rebranding and praised us for focusing our project on marketing a theatre rather than the shows at the theater. 
 
-* Bullet
-* Points
+
+The full rebranding website can be found at:
+
+> https://valmoral37.wixsite.com/orpheumrebrand
 
 #[1]: /img/germanElections_plot.jpg 

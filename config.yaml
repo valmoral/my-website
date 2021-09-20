@@ -17,8 +17,9 @@ params:
     - name: Contact
       url: contact/
   sidebarAbout:
-    - I am a Masters in Analytics and Management Student at London Business School with a Bachelors of Science in Statistics and a passion for technology.
+    - Masters in Management at London Business School | Bachelors of Science in Statistics from UCLA
     - Colombian, from Los Angeles, based in London
+    - analytical, creative, & overall groovy
   social:
     email: val.c.morales@gmail.com
     github: https://github.com/valmoral
