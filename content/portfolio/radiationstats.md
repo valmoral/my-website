@@ -1,6 +1,6 @@
 ---
 title: "Radiation Statistics Experiment"
-draft: no
+draft: yes
 date: '2016-11-05T19:56:17+05:30'
 showonlyimage: yes
 image: img/portfolio/radiation.jpg
