@@ -4,7 +4,7 @@ draft: false
 image: img/gdp1_plot_home.jpg
 showonlyimage: true
 title: GDP Components
-weight: 9
+weight: 8
 ---
 
 ## Data Cleaning

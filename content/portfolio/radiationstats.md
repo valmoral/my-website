@@ -4,7 +4,7 @@ draft: no
 date: '2016-11-05T19:56:17+05:30'
 showonlyimage: yes
 image: img/portfolio/radiation.jpg
-weight: 10
+weight: 11
 ---
 
 For the final project of Statistics 101B: Design of Experiment, I was asked to collaborate with a group to create and execute a statistical experiment on mock subjects. After extensive research, my group and I decided to analyze whether radiation has an effect on cognitive memory. The subjects we used were "Islanders," a virtual population that supports learning and teaching in experimental design. Although they were not real people, any experiments done on the subject were in real time so timing had to be considered. 

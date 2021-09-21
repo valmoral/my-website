@@ -4,7 +4,7 @@ draft: false
 image: img/portfolio/7_pamphlet.jpg
 showonlyimage: true
 title: UCLA Library Pamphlets
-weight: 11
+weight: 10
 ---
 
 In December 2017, I was approached by a co-worker at Powell Library to help design a series of pamphlets for the UCLA Libraries. The purpose of the pamphlets is for students to have a guide of the study spots available at each library, alongside features of said study spot. For 3 months, I worked alongside co-worker to create a personalized "Where to Study" pamphlet for 7 UCLA Libraries. We took inventory of the study spaces in each library, and utilized Canva to create the pamphlets while maintaining the colors and branding of the UCLA Library system.

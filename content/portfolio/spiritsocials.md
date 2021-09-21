@@ -4,7 +4,7 @@ draft: false
 image: img/portfolio/4_spirit.jpg
 showonlyimage: true
 title: Spirit Squad Media Branding
-weight: 8
+weight: 9
 ---
 
 ![Spirit 2020][1]
